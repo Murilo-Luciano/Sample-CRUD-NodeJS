@@ -1,0 +1,15 @@
+{
+  "name": "Sample-CRUD-NodeJS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Murilo-Luciano/Sample-CRUD-NodeJS.git",
+  "author": "Murilo-Luciano <murilo.luciano123@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/app"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  }
+}
