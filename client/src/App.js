@@ -1,28 +1,37 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import Button from "@mui/material/Button";
+import ListStudents from "./students/ListStudents";
+import AddStudents from "./students/AddStudents";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Routes,
+} from "react-router-dom";
 
 function App() {
-  const [resp, setResp] = useState([]);
-
-  const callApi = async () => {
-    const response = await fetch("http://localhost:5000/students");
-    const data = await response.json();
-    return data;
-  };
-
-  useEffect(() => {
-    callApi().then((res) => setResp(res));
-  }, []);
-
-  console.log(resp.map((e) => console.log(e.studentName)));
-
   return (
-    <div>
-      {resp.map((e) => (
-        <p>{e.studentName}</p>
-      ))}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/add" element={<AddStudents />} />
+        <Route
+          path="/"
+          element={
+            <div style={{ height: 400, width: "100%" }}>
+              <ListStudents />
+
+              <Link to="/add">
+                <Button variant="outlined">Add Student</Button>
+              </Link>
+            </div>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
