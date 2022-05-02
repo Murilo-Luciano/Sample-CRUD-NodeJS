@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ListStudents = () => {
   const [resp, setResp] = useState([]);
@@ -15,7 +17,7 @@ const ListStudents = () => {
   }, []);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "studentId", headerName: "ID", width: 90 },
     {
       field: "studentName",
       headerName: "Student name",
@@ -29,6 +31,28 @@ const ListStudents = () => {
       width: 110,
       editable: true,
     },
+    {
+      field: "delete",
+      width: 75,
+      sortable: false,
+      disableColumnMenu: true,
+      renderHeader: () => {
+        return (
+          <IconButton
+            onClick={() => {
+              // const selectedIDs = new Set(selectionModel);
+              // you can call an API to delete the selected IDs
+              // and get the latest results after the deletion
+              // then call setRows() to update the data locally here
+              // setRows((r) => r.filter((x) => !selectedIDs.has(x.id)));
+              console.log("CLICKED");
+            }}
+          >
+            <DeleteIcon />
+          </IconButton>
+        );
+      },
+    },
   ];
 
   return (
@@ -38,8 +62,9 @@ const ListStudents = () => {
       pageSize={5}
       rowsPerPageOptions={[5]}
       checkboxSelection
-      getRowId={(row) => row.studentid}
+      getRowId={(row) => row.studentId}
       disableSelectionOnClick
+      components={{ Toolbar: GridToolbar }}
     />
   );
 };

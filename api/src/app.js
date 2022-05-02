@@ -28,7 +28,7 @@ app.post("/students/new", async (req, res) => {
   const name = req.param("name");
   const age = req.param("age");
   await db.query(
-    "INSERT INTO students (studentName, studentAge) VALUES ($1, $2)",
+    'INSERT INTO students ("studentName", "studentAge") VALUES ($1, $2)',
     [name, age]
   );
 
