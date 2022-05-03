@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 const ListStudents = () => {
   const [resp, setResp] = useState([]);
+  const [selectedRows, setSelectedRows] = useState([]);
 
   const callApi = async () => {
     const response = await fetch("http://localhost:5000/students");
@@ -33,7 +34,7 @@ const ListStudents = () => {
     },
     {
       field: "delete",
-      width: 75,
+      width: 50,
       sortable: false,
       disableColumnMenu: true,
       renderHeader: () => {
@@ -45,7 +46,7 @@ const ListStudents = () => {
               // and get the latest results after the deletion
               // then call setRows() to update the data locally here
               // setRows((r) => r.filter((x) => !selectedIDs.has(x.id)));
-              console.log("CLICKED");
+              console.log(selectedRows);
             }}
           >
             <DeleteIcon />
@@ -64,7 +65,9 @@ const ListStudents = () => {
       checkboxSelection
       getRowId={(row) => row.studentId}
       disableSelectionOnClick
+      isCellEditable={() => false}
       components={{ Toolbar: GridToolbar }}
+      onSelectionModelChange={(id) => setSelectedRows(id)}
     />
   );
 };
