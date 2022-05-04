@@ -38,6 +38,14 @@ app.post("/students/new", async (req, res) => {
   });
 });
 
+app.delete("/students/:id", async (req, res) => {
+  const studentId = req.param("id");
+  const query = await db.query( 'DELETE FROM students WHERE "studentId"=$1', [
+    studentId,
+  ]);
+  res.send(query.rows);
+})
+
 app.listen("5000", () => {
   console.log("Running on port 5000 🚀");
 });

@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  connectionString: "postgres://murilodb:123456@localhost:5432/postgres",
+  connectionString: "postgres://postgres:kamisama123@localhost:5432/postgres",
 });
 
 pool.on("connect", () => {

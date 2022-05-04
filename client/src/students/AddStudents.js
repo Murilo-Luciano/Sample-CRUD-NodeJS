@@ -43,14 +43,15 @@ const AddStudents = () => {
         <Link to="/">
           <Button
             variant="outlined"
-            onClick={() =>
+            onClick={() => {
               fetch(
                 `http://localhost:5000/students/new?name=${name}&age=${age}`,
                 {
                   method: "POST",
                 }
               ).then((res) => console.log(res))
-            }
+            }}
+            
           >
             Submit
           </Button>
