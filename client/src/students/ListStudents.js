@@ -41,21 +41,12 @@ const ListStudents = () => {
         return (
           <IconButton
             onClick={() => {
-              // const selectedIDs = new Set(selectionModel);
-              // you can call an API to delete the selected IDs
-              // and get the latest results after the deletion
-              // then call setRows() to update the data locally here
-              // setRows((r) => r.filter((x) => !selectedIDs.has(x.id)));
-
-              selectedRows.forEach(id => {
-                fetch(
-                  `http://localhost:5000/students/${id}`,
-                  {
-                    method: "DELETE",
-                  }
-                ).then((res) => console.log(res))
-              })
-              window.location.reload(false)
+              selectedRows.forEach((id) => {
+                fetch(`http://localhost:5000/students/${id}`, {
+                  method: "DELETE",
+                }).then((res) => console.log(res));
+              });
+              window.location.reload(false);
             }}
           >
             <DeleteIcon />
