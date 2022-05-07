@@ -1,11 +1,11 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  connectionString: "postgres://postgres:kamisama123@localhost:5432/postgres",
+  connectionString: process.env.DATABASE_URL,
 });
 
 pool.on("connect", () => {
-  console.log("DB connected successfully!");
+  console.log("DB connected !!");
 });
 
 module.exports = { query: (text, params) => pool.query(text, params) };

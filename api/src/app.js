@@ -1,8 +1,11 @@
 const express = require("express");
 const db = require("./config/database");
 const cors = require("cors");
+const dotenv = require("dotenv");
 
 const app = express();
+
+dotenv.config();
 app.use(cors());
 
 app.get("/", (req, res) => {
@@ -40,12 +43,12 @@ app.post("/students/new", async (req, res) => {
 
 app.delete("/students/:id", async (req, res) => {
   const studentId = req.param("id");
-  const query = await db.query( 'DELETE FROM students WHERE "studentId"=$1', [
+  const query = await db.query('DELETE FROM students WHERE "studentId"=$1', [
     studentId,
   ]);
   res.send(query.rows);
-})
+});
 
-app.listen("5000", () => {
-  console.log("Running on port 5000 🚀");
+app.listen(process.env.API_PORT, () => {
+  console.log(`Running on port ${process.env.API_PORT} 🚀`);
 });
