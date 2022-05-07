@@ -1,2 +1,2 @@
 # Sample-CRUD-NodeJS
-A project for my algorithm complexity class
+A sample Student database CRUD project with Nodejs, Express.JS and PostgreSQL
