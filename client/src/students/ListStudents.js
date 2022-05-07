@@ -21,7 +21,7 @@ const ListStudents = () => {
     { field: "studentId", headerName: "ID", width: 90 },
     {
       field: "studentName",
-      headerName: "Student name",
+      headerName: "Name",
       width: 150,
       editable: true,
     },
