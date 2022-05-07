@@ -11,19 +11,7 @@ const AddStudents = () => {
 
   return (
     <div>
-      <Paper
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-          height: 400,
-          margin: 400,
-          marginTop: 100,
-          marginBottom: 100,
-        }}
-        elevation={4}
-      >
+      <Paper style={styles.paper} elevation={4}>
         <TextField
           id="filled-basic"
           label="Name"
@@ -49,9 +37,8 @@ const AddStudents = () => {
                 {
                   method: "POST",
                 }
-              ).then((res) => console.log(res))
+              ).then((res) => console.log(res));
             }}
-            
           >
             Submit
           </Button>
@@ -59,6 +46,19 @@ const AddStudents = () => {
       </Paper>
     </div>
   );
+};
+
+const styles = {
+  paper: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    height: 400,
+    margin: 400,
+    marginTop: 100,
+    marginBottom: 100,
+  },
 };
 
 export default AddStudents;

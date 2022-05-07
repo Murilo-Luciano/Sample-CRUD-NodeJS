@@ -4,17 +4,17 @@ import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const ListStudents = () => {
-  const [resp, setResp] = useState([]);
+  const [studentsList, setStudentsList] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
 
-  const callApi = async () => {
+  const getStudents = async () => {
     const response = await fetch("http://localhost:5000/students");
     const data = await response.json();
     return data;
   };
 
   useEffect(() => {
-    callApi().then((res) => setResp(res));
+    getStudents().then((res) => setStudentsList(res));
   }, []);
 
   const columns = [
@@ -58,7 +58,7 @@ const ListStudents = () => {
 
   return (
     <DataGrid
-      rows={resp}
+      rows={studentsList}
       columns={columns}
       pageSize={5}
       rowsPerPageOptions={[5]}

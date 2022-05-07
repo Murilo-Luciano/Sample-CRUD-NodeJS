@@ -1,7 +1,3 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { useEffect, useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import ListStudents from "./students/ListStudents";
@@ -26,24 +22,17 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        style={{
-          position: "absolute",
-          height: "100%",
-          width: "100%",
-          backgroundColor: "rgb(39 39 39 / 90%)",
-        }}
-      >
+      <Box style={styles.container}>
         <Router>
           <Routes>
             <Route path="/add" element={<AddStudents />} />
             <Route
               path="/"
               element={
-                <Paper style={{ height: 400, margin: 250 }} elevation={4}>
+                <Paper style={styles.paper} elevation={4}>
                   <ListStudents />
                   <Link to="/add">
-                    <Button variant="outlined" style={{ marginTop: 10 }}>
+                    <Button variant="outlined" style={styles.addStudentButton}>
                       Add Student
                     </Button>
                   </Link>
@@ -56,5 +45,19 @@ function App() {
     </ThemeProvider>
   );
 }
+
+const styles = {
+  container: {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+    backgroundColor: "rgb(39 39 39 / 90%)",
+  },
+  paper: {
+    height: 400,
+    margin: 250,
+  },
+  addStudentButton: { marginTop: 10 },
+};
 
 export default App;
